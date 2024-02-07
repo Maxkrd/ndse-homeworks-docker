@@ -1,0 +1,45 @@
+1. Загрузите образ node версии 15.14 (загрузил образ версии 20.10)
+adminmax@adminmax-VirtualBox:~$ docker pull node:20.10
+20.10: Pulling from library/node
+bc0734b949dc: Pull complete 
+b5de22c0f5cd: Pull complete 
+917ee5330e73: Pull complete 
+b43bd898d5fb: Pull complete 
+9b5852c9e7e7: Pull complete 
+ffce7831deb3: Pull complete 
+4360a670e724: Pull complete 
+657e9acbc9b4: Pull complete 
+Digest: sha256:8d0f16fe841577f9317ab49011c6d819e1fa81f8d4af7ece7ae0ac815e07ac84
+Status: Downloaded newer image for node:20.10
+docker.io/library/node:20.10
+
+2. Запустите контейнер node в интерактивном режиме подключения терминала, поименуйте его mynode, передайте две переменные среды NAME=<ваше имя> и SURNAME=<ваша фамилия>
+
+adminmax@adminmax-VirtualBox:~$ docker run --name mynode -it -e NAME=Maxim -e SURNAME=Morozov node:20.10
+Welcome to Node.js v20.10.0.
+
+3. В интерактивной среде выполнения node выполните скрипт, который выведет на экран приветсвтие: Привет, <ваше имя> <ваша фамилия>!, эти данные должны быть получены из переменных среды
+
+> console.log(`Привет, ${process.env.NAME} ${process.env.SURNAME} !`)
+Привет, Maxim Morozov !
+
+4. Остановите контейнер
+adminmax@adminmax-VirtualBox:~$ docker stop mynode
+mynode
+
+5. Удалите образ node версии 15.14 (20.10)
+adminmax@adminmax-VirtualBox:~$ docker rm mynode
+mynode
+adminmax@adminmax-VirtualBox:~$ docker rmi node:20.10
+Untagged: node:20.10
+Untagged: node@sha256:8d0f16fe841577f9317ab49011c6d819e1fa81f8d4af7ece7ae0ac815e07ac84
+Deleted: sha256:67d9cdb160166226de55337f6b14c44d576cf14f10cd0fb9fbd7854b04dad8ba
+Deleted: sha256:f74e49f436afb9c8e5c6497cb3b1a423b58d2afa4367abb632f9804dc0bcacdf
+Deleted: sha256:55f845530c6cbe0cb4e8b2fbbb5722826dab4681a3627c7f73c104d9a62ccfc5
+Deleted: sha256:00fbfcf84f756c96cde6b48edda29b1346612591c0d706ed2cd24b4788b43f47
+Deleted: sha256:2fc9308eaf9d6ffbaaa664ea2862ea550640e587a98584199589fc122b817d31
+Deleted: sha256:5d56f3849a5a5c75817479f9824c9769071443821c6f840f437bd5b06d2d362c
+Deleted: sha256:1480c0bdd0fdaf4a3554efe78d85b5a25e26a3e782f887602e7af7ef7230fb76
+Deleted: sha256:f6840d780fd90d348995d50d33a0e1aed6d23076ae7b850aa19ea7ef707d2200
+Deleted: sha256:ae134c61b154341a1dd932bd88cb44e805837508284e5d60ead8e94519eb339f
+
